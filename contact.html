@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <link rel="stylesheet" href="styleh.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f0f0;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+        .contact-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .contact-form {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+        .contact-form label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .contact-form input[type="text"],
+        .contact-form input[type="email"],
+        .contact-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .contact-form textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+        .contact-form input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+        .contact-form input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        .contact-info {
+            text-align: center;
+        }
+        .contact-info p {
+            margin-bottom: 10px;
+        }
+        .contact-info .social-icons {
+            margin-top: 20px;
+        }
+        .contact-info .social-icons a {
+            display: inline-block;
+            margin: 0 10px;
+            color: #555;
+            font-size: 24px;
+            transition: color 0.3s ease;
+        }
+        .contact-info .social-icons a:hover {
+            color: #4CAF50;
+        }
+        @media (max-width: 600px) {
+            .container {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header> 
+        <a href="#" class="logo">Destination Pakistan</a>
+        <nav>
+            <a href="front.html">HOME</a>
+            <a href="tour.html">TOUR PACKAGES</a>
+            <a href="destination.html">DESTINATION</a>
+            <a href="gallery.html">GALLERY</a>
+            <a href="about.html">ABOUT US</a>
+            <a href="contact.html">CONTACT US</a>
+        </nav>
+     </header>
+    <div class="container">
+        <div class="contact-header">
+            <h2>Contact Us</h2>
+            <p>We'd love to hear from you!</p>
+        </div>
+        
+        <div class="contact-form">
+            <form id="contactForm">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+                
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                
+                <label for="subject">Subject:</label>
+                <input type="text" id="subject" name="subject">
+                
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" rows="5" required></textarea>
+                
+                <input type="submit" value="Submit">
+            </form>
+        </div>
+        
+        <div class="contact-info">
+            <h3>Contact Information:</h3>
+            <p><strong>Email:</strong> destinationpakistan@gmail.com</p>
+            <p><strong>Phone:</strong> +1234567890</p>
+            
+            <div class="social-icons">
+                <a href="https://web.facebook.com/destinationispakistan/?_rdc=1&_rdr" target="_blank" title="Facebook"><i class="fab fa-facebook"></i></a>
+                <a href="https://x.com/i/flow/login?redirect_after_login=%2Fdestinationpak" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.instagram.com/destinationpakistan/?hl=en" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.linkedin.com/company/destinationpakistan/?originalSubdomain=pk" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(event) {
+            event.preventDefault(); 
+
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const message = document.getElementById('message').value.trim();
+
+            if (!/^[a-zA-Z\s]+$/.test(name)) {
+                alert('Please enter a valid name. Only alphabetical characters are allowed.');
+                return;
+            }
+
+            if (!/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(email)) {
+                alert('Please enter a valid email address.');
+                return;
+            }
+
+            if (!name || !email || !message) {
+                alert('Please fill out all required fields.');
+                return;
+            }
+
+            alert(`Thank you, ${name}! Your message has been received. We will get back to you at ${email} soon.`);
+
+            document.getElementById('contactForm').reset();
+        });
+
+        document.getElementById('name').addEventListener('input', function() {
+            const name = this.value;
+            if (!/^[a-zA-Z\s]*$/.test(name)) {
+                this.style.borderColor = 'red';
+            } else {
+                this.style.borderColor = '';
+            }
+        });
+
+        const messageField = document.getElementById('message');
+        const charCount = document.createElement('div');
+        charCount.style.textAlign = 'right';
+        charCount.style.fontSize = '12px';
+        charCount.style.color = '#555';
+        messageField.parentNode.appendChild(charCount);
+
+        messageField.addEventListener('input', function() {
+            const remaining = 500 - this.value.length;
+            charCount.textContent = `${remaining} characters remaining`;
+            if (remaining < 0) {
+                charCount.style.color = 'red';
+            } else {
+                charCount.style.color = '#555';
+            }
+        });
+    </script>
+</body>
+</html>
